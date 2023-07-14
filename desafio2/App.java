@@ -8,66 +8,55 @@ public class App {
 
         double value = scan.nextDouble();
 
-        int[] moneyNotes = {100, 50, 20, 10, 5, 2};
-        double[] coins = {1, 0.5, 0.25, 0.1, 0.05, 0.01};
-
         System.out.println("NOTAS:");
-
-        for (int index = 0; index < moneyNotes.length; index++) {
-            int notesQuantity = (int) (value / moneyNotes[index]);  // 576.73 / 100
-            if (notesQuantity > 0) {
-                System.out.println(notesQuantity
-                        + "     "
-                        + "nota(s)"
-                        + "     "
-                        + "de"
-                        + "     "
-                        + "R$"
-                        + "    "
-                        + String.format("%.2f", (double) moneyNotes[index]));
-                // System.out.println(moneyNotes[index] + ": " + notesQuantity);
-                value %= moneyNotes[index];
-            } else {
-                System.out.println(0
-                        + "     "
-                        + "nota(s)"
-                        + "     "
-                        + "de"
-                        + "     "
-                        + "R$"
-                        + "    "
-                        + String.format("%.2f", (double) moneyNotes[index]));
-            }
-        }
+        value = handleNotes(value);
 
         System.out.println("MOEDAS:");
-
-        for (int index = 0; index < coins.length; index++) {
-            int coinsQuantity = (int) (value / coins[index]);
-            if (coinsQuantity > 0) {
-                System.out.println(coinsQuantity
-                        + "     "
-                        + "moeda(s)"
-                        + "     "
-                        + "de"
-                        + "     "
-                        + "R$"
-                        + "    "
-                        + String.format("%.2f", (double) coins[index]));
-                value %= coins[index];
-            } else {
-                System.out.println(0
-                        + "     "
-                        + "moeda(s)"
-                        + "     "
-                        + "de"
-                        + "     "
-                        + "R$"
-                        + "    "
-                        + String.format("%.2f", (double) coins[index]));
-            }
-        }
+        handleCoins(value);
 
         scan.close();
+    }
+
+    public static double handleNotes(double value) {
+        int[] notes = {100, 50, 20, 10, 5, 2};
+
+        for (int note : notes) {
+            int notesQuantity = (int) (value / note);
+
+            if (notesQuantity > 0) {
+                System.out.println(message(notesQuantity, note));
+                value %= note;
+            } else {
+                System.out.println(message(0, note));
+            }
+        }
+        return value;
+    }
+
+    public static void handleCoins(double value) {
+        double[] coins = {1, 0.5, 0.25, 0.1, 0.05, 0.01};
+
+        for (double coin : coins) {
+            int coinsQuantity = (int) (value / coin);
+
+            if (coinsQuantity > 0) {
+                System.out.println(message(coinsQuantity, coin));
+                value %= coin;
+            } else {
+                System.out.println(message(0, coin));
+            }
+        }
+    }
+
+    public static String message(int quantity, double number) {
+        return quantity
+                + "     "
+                + "nota(s)"
+                + "     "
+                + "de"
+                + "     "
+                + "R$"
+                + "    "
+                + String.format("%.2f", number);
     }
 }
