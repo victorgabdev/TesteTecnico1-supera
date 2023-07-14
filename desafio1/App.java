@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
@@ -24,11 +20,11 @@ public class App {
         
         scan.close();
 
-        List<Integer> pairNumbersCrescent = pairNumbers.stream().sorted().toList();
-        List<Integer> oddNumberDecrescent = oddNumbers.stream().sorted(Comparator.reverseOrder()).toList();
+        Collections.sort(pairNumbers);
+        oddNumbers.sort(Collections.reverseOrder());
 
         System.out.println("--------------------");
-        pairNumbersCrescent.forEach(System.out::println);
-        oddNumberDecrescent.forEach(System.out::println);
+        pairNumbers.forEach(System.out::println);
+        oddNumbers.forEach(System.out::println);
     }
 }
