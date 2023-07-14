@@ -21,6 +21,8 @@ public class App {
                 oddNumbers.add(number);
             }
         }
+        
+        scan.close();
 
         List<Integer> pairNumbersCrescent = pairNumbers.stream().sorted().toList();
         List<Integer> oddNumberDecrescent = oddNumbers.stream().sorted(Comparator.reverseOrder()).toList();
