@@ -13,29 +13,19 @@ public class App {
             List<String> infectedPhrases = new ArrayList<>();
 
             System.out.println("Digite as frases infectadas:");
-
             for (int index = 0; index < phrasesQuantity; index++) {
                 String infectedPhrase = scanner.nextLine();
                 infectedPhrases.add(infectedPhrase);
             }
 
             List<String> decipheredPhrases = decipherPhrases(infectedPhrases);
-
             System.out.println("----------------------");
-
-            for (String decipheredPhrase : decipheredPhrases) {
-                System.out.println(decipheredPhrase);
-            }
+            decipheredPhrases.forEach(System.out::println);
         }
 
         public static List<String> decipherPhrases(List < String > infectedPhrases) {
             List<String> decipheredPhrases = new ArrayList<>();
-
-            for (String infectedPhrase : infectedPhrases) {
-                String deciphered = decipherLine(infectedPhrase);  // aqui
-                decipheredPhrases.add(deciphered);
-            }
-
+            infectedPhrases.forEach(infected -> decipheredPhrases.add(decipherLine(infected)));
             return decipheredPhrases;
         }
 
