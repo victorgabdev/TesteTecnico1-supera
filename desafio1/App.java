@@ -21,7 +21,7 @@ public class App {
         scan.close();
 
         Collections.sort(pairNumbers);
-        oddNumbers.sort(Collections.reverseOrder());
+        Collections.sort(oddNumbers, Collections.reverseOrder());
 
         System.out.println("--------------------");
         pairNumbers.forEach(System.out::println);
