@@ -42,6 +42,4 @@ Contribuições para a resolução dos desafios são bem-vindas. Se você tem um
 
 ## Contato
 
-## Contato
-
 Para mais informações ou dúvidas, entre em contato através do meu e-mail: [victorgabdev@gmail.com]
